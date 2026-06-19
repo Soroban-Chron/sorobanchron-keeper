@@ -18,6 +18,13 @@ if (!config.keeperSecret || !config.contractId) {
   process.exit(1);
 }
 
+try {
+  new URL(config.horizonUrl);
+} catch {
+  console.error(`invalid HORIZON_URL: "${config.horizonUrl}" is not a valid URL`);
+  process.exit(1);
+}
+
 // TODO: populate from on-chain registry query
 const jobRegistry: Job[] = [];
 

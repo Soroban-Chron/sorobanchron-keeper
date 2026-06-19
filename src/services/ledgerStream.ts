@@ -13,6 +13,9 @@ export async function getLatestLedger(horizonUrl: string): Promise<LedgerInfo> {
   return { sequence: record.sequence, closedAt: record.closed_at };
 }
 
+/**
+ * Returns jobs whose activeLedger is at or below the current ledger sequence.
+ */
 export function filterReadyJobs(jobs: Job[], currentLedger: number): Job[] {
   return jobs.filter((j) => j.activeLedger <= currentLedger);
 }

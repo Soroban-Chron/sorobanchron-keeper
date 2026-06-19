@@ -1,3 +1,7 @@
+export const DEFAULT_HORIZON_URL = "https://horizon-testnet.stellar.org";
+export const DEFAULT_NETWORK_PASSPHRASE = "Test SDF Network ; September 2015";
+export const DEFAULT_POLL_INTERVAL_MS = 5000;
+
 export interface Job {
   jobId: string;
   contractId: string;

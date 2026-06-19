@@ -1,14 +1,14 @@
 import "dotenv/config";
 import { getLatestLedger, filterReadyJobs } from "./services/ledgerStream.js";
 import { submitExecuteJob } from "./services/txSubmitter.js";
-import { Job, KeeperConfig } from "./types/index.js";
+import { Job, KeeperConfig, DEFAULT_HORIZON_URL, DEFAULT_NETWORK_PASSPHRASE, DEFAULT_POLL_INTERVAL_MS } from "./types/index.js";
 
 const config: KeeperConfig = {
-  horizonUrl: process.env.HORIZON_URL ?? "https://horizon-testnet.stellar.org",
-  networkPassphrase: process.env.NETWORK_PASSPHRASE ?? "Test SDF Network ; September 2015",
+  horizonUrl: process.env.HORIZON_URL ?? DEFAULT_HORIZON_URL,
+  networkPassphrase: process.env.NETWORK_PASSPHRASE ?? DEFAULT_NETWORK_PASSPHRASE,
   keeperSecret: process.env.KEEPER_SECRET ?? "",
   contractId: process.env.CONTRACT_ID ?? "",
-  pollIntervalMs: Number(process.env.POLL_INTERVAL_MS ?? 5000),
+  pollIntervalMs: Number(process.env.POLL_INTERVAL_MS ?? DEFAULT_POLL_INTERVAL_MS),
 };
 
 if (!config.keeperSecret || !config.contractId) {

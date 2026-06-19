@@ -1,6 +1,7 @@
 import "dotenv/config";
 import { getLatestLedger, filterReadyJobs } from "./services/ledgerStream.js";
 import { submitExecuteJob } from "./services/txSubmitter.js";
+import { sleep } from "./utils.js";
 import { Job, KeeperConfig, DEFAULT_HORIZON_URL, DEFAULT_NETWORK_PASSPHRASE, DEFAULT_POLL_INTERVAL_MS } from "./types/index.js";
 
 const config: KeeperConfig = {
@@ -43,7 +44,7 @@ async function main(): Promise<void> {
   console.log("sorobanchron-keeper starting…");
   while (true) {
     await tick().catch((err: Error) => console.error("tick:", err.message));
-    await new Promise((r) => setTimeout(r, config.pollIntervalMs));
+    await sleep(config.pollIntervalMs);
   }
 }
 

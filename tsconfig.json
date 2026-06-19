@@ -7,10 +7,12 @@
     "rootDir": "src",
     "strict": true,
     "sourceMap": true,
+    "declaration": true,
     "declarationMap": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
+    "noUncheckedIndexedAccess": true,
     "resolveJsonModule": true
   },
   "include": ["src"]

@@ -2,6 +2,7 @@
   "name": "sorobanchron-keeper",
   "version": "0.1.0",
   "description": "Off-chain keeper daemon for SorobanChron — polls Stellar ledger and submits competitive execution transactions",
+  "license": "Apache-2.0",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",

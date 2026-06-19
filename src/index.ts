@@ -25,6 +25,11 @@ try {
   process.exit(1);
 }
 
+if (!Number.isFinite(config.pollIntervalMs) || config.pollIntervalMs <= 0) {
+  console.error("POLL_INTERVAL_MS must be a positive number");
+  process.exit(1);
+}
+
 // TODO: populate from on-chain registry query
 const jobRegistry: Job[] = [];
 

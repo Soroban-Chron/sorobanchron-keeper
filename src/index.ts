@@ -42,6 +42,10 @@ async function tick(): Promise<void> {
 
 async function main(): Promise<void> {
   console.log("sorobanchron-keeper starting…");
+  process.on("SIGINT", () => {
+    console.log("\nshutdown signal received — exiting cleanly");
+    process.exit(0);
+  });
   while (true) {
     await tick().catch((err: Error) => console.error("tick:", err.message));
     await sleep(config.pollIntervalMs);

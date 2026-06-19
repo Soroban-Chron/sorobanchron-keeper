@@ -1,4 +1,5 @@
 import "dotenv/config";
+import { Keypair } from "@stellar/stellar-sdk";
 import { getLatestLedger, filterReadyJobs } from "./services/ledgerStream.js";
 import { submitExecuteJob } from "./services/txSubmitter.js";
 import { sleep } from "./utils.js";
@@ -42,6 +43,7 @@ async function tick(): Promise<void> {
 
 async function main(): Promise<void> {
   console.log("sorobanchron-keeper starting…");
+  console.log("keeper public key:", Keypair.fromSecret(config.keeperSecret).publicKey());
   process.on("SIGINT", () => {
     console.log("\nshutdown signal received — exiting cleanly");
     process.exit(0);
